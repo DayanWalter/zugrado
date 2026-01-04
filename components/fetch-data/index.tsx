@@ -1,12 +1,14 @@
 "use client";
 
+import { gql } from "@/__generated__/gql";
+import type { GetTracksQuery } from "@/__generated__/graphql";
 import { Button } from "@/components/ui/button";
-import { gql, useLazyQuery } from "@apollo/client";
+import { useLazyQuery } from "@apollo/client";
 
 /**
  * Example GraphQL query to fetch tracks
  */
-const GET_TRACKS = gql`
+const GET_TRACKS = gql(`
   query GetTracks {
     tracksForHome {
       id
@@ -21,31 +23,14 @@ const GET_TRACKS = gql`
       }
     }
   }
-`;
-
-interface Track {
-  id: string;
-  title: string;
-  thumbnail: string;
-  length: number;
-  modulesCount: number;
-  author: {
-    id: string;
-    name: string;
-    photo: string;
-  };
-}
-
-interface TracksData {
-  tracksForHome: Track[];
-}
+`);
 
 /**
  * Component that fetches and displays GraphQL data on button click
  */
 export function FetchData() {
   const [getTracks, { loading, error, data }] =
-    useLazyQuery<TracksData>(GET_TRACKS);
+    useLazyQuery<GetTracksQuery>(GET_TRACKS);
 
   const handleFetch = () => {
     getTracks();
