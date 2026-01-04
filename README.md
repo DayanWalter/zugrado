@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Zugrado
 
-## Getting Started
+A showcase project demonstrating **Zustand**, **GraphQL**, and **Docker** in a Next.js application.
 
-First, run the development server:
+## Technologies
+
+- **Next.js 16** - React Framework
+- **Zustand** - State Management
+- **GraphQL** - API with Apollo Client
+- **Docker** - Containerization
+- **Bun** - JavaScript Runtime & Package Manager
+- **TypeScript** - Type Safety
+- **Tailwind CSS v4** - Styling
+
+## Prerequisites
+
+- [Bun](https://bun.sh/) installed
+- [Docker](https://www.docker.com/) (optional, for containerization)
+
+## Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+bun install
+```
+
+## Development
+
+Start the development server with Bun:
+
+```bash
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application will be available at [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## GraphQL Code Generation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Generate TypeScript types from the GraphQL schema:
 
-## Learn More
+```bash
+bun run generate
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Docker
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### With Docker Compose
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Start the application in a container:
 
-## Deploy on Vercel
+```bash
+docker-compose up
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Manually with Docker
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+docker build -t zugrado .
+docker run -p 3000:3000 zugrado
+```
+
+## Build
+
+Create a production build:
+
+```bash
+bun run build
+```
+
+Start the production server:
+
+```bash
+bun run start
+```
+
+## Project Structure
+
+- `components/` - React components
+- `stores/` - Zustand state stores
+- `app/` - Next.js App Router
+- `__generated__/` - Generated GraphQL types
+- `docker-compose.yaml` - Docker Compose configuration
+- `Dockerfile` - Docker image definition
